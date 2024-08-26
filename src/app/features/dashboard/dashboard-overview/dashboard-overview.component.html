@@ -1,0 +1,61 @@
+<mat-grid-list cols="3" rowHeight="1:1">
+  <mat-grid-tile colspan="2">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Project Overview</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="metrics">
+          <div class="metric">
+            <mat-icon>assignment</mat-icon>
+            <span>{{ activeProjects }} Active Projects</span>
+          </div>
+          <div class="metric">
+            <mat-icon>task</mat-icon>
+            <span>{{ totalTasks }} Total Tasks</span>
+          </div>
+          <div class="metric">
+            <mat-icon>schedule</mat-icon>
+            <span>{{ upcomingDeadlines }} Upcoming Deadlines</span>
+          </div>
+          <div class="metric">
+            <mat-icon>group</mat-icon>
+            <span>{{ teamMembers }} Team Members</span>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Recent Activity</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="recent-activity">
+          @for (activity of recentActivities; track $index) {
+          <mat-icon>event_note</mat-icon>
+          <span>{{ activity.description }}</span>
+          }
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+  <mat-grid-tile colspan="3">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Task Summary</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <div class="task-summary">
+          <mat-progress-bar mode="determinate" [value]="taskCompletion"></mat-progress-bar>
+          <div class="task-summary-details">
+            <span>{{ tasks.todo }} To Do</span>
+            <span>{{ tasks.inProgress }} In Progress</span>
+            <span>{{ tasks.completed }} Completed</span>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>
